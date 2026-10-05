@@ -37,7 +37,7 @@ p b,li b{color:var(--fg)}
 small{color:var(--mut);font-size:12px}
 .links a{color:var(--acc);margin-right:16px;text-decoration:none}
 .hint{position:fixed;bottom:calc(18px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:5;color:var(--mut);font-size:12px;letter-spacing:.1em;transition:opacity .4s}
-@media(max-width:700px){nav{flex-direction:column;gap:8px;padding:12px 4vw}nav div{gap:12px;flex-wrap:wrap;justify-content:center}#dots{display:none}.panel,.panel.r{justify-content:center}#s0.panel{align-items:start;padding-top:140px}.card{padding:22px}}
+@media(max-width:700px){*{-webkit-tap-highlight-color:transparent}nav{flex-direction:column;gap:8px;padding:12px 4vw}nav div{gap:12px;flex-wrap:wrap;justify-content:center}#dots{display:none}.panel,.panel.r{justify-content:center}#s0.panel{align-items:start;padding-top:140px}.card{padding:22px}}
 body{font-family:'Space Grotesk',Inter,system-ui,sans-serif}
 .tag,nav a,.chips span,.flow,small,.hint,#ro{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace}
 .tag{font-size:11px}
@@ -50,8 +50,8 @@ h1 span{background:linear-gradient(90deg,var(--acc),#38bdf8);-webkit-background-
 #ro{position:fixed;left:6vw;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:5;font-size:11px;color:var(--mut);letter-spacing:.12em}
 body::after{content:"";position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.06;background-image:radial-gradient(var(--fg) 1px,transparent 1px);background-size:5px 5px}
 @media(max-width:700px){#ro{display:none}}
-.av{position:relative;width:140px;height:140px;margin:0 auto 18px;border-radius:50%;padding:3px;background:conic-gradient(from 0deg,var(--acc),#38bdf8,transparent 60%,var(--acc));animation:sp 6s linear infinite}
-.av img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:3px solid var(--bg);animation:sp 6s linear infinite reverse}
+.av{position:relative;width:140px;height:140px;margin:0 auto 18px;border-radius:50%;padding:3px;background:conic-gradient(from 0deg,var(--acc),#38bdf8,transparent 60%,var(--acc))}
+.av img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:3px solid var(--bg)}
 @keyframes sp{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.av,.av img{animation:none}}
 /* contraste de textos */

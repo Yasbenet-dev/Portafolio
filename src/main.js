@@ -2,7 +2,7 @@
 var N=7,GAP=40,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var cv=document.getElementById('c');
 var R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
-R.setPixelRatio(Math.min(devicePixelRatio,2));
+R.setPixelRatio(window.innerWidth > 800 ? Math.min(devicePixelRatio,2) : 1);
 var S=new THREE.Scene(),cam=new THREE.PerspectiveCamera(60,1,.1,400);
 var sw=0,sh=0;function size(){sw=Math.max(1,innerWidth);sh=Math.max(1,innerHeight);R.setSize(sw,sh,false);cam.aspect=sw/sh;cam.updateProjectionMatrix()}
 addEventListener('resize',size);size();
@@ -12,7 +12,7 @@ var acc=new THREE.Color(getComputedStyle(document.documentElement).getPropertyVa
 function wm(o){return new THREE.MeshBasicMaterial({color:acc,wireframe:true,transparent:true,opacity:o||.55})}
 function solid(o){return new THREE.MeshBasicMaterial({color:acc,transparent:true,opacity:o||.9})}
 // estrellas: titilan en reposo y se alargan al viajar (salto a la velocidad de la luz)
-var warp=0,SC_=3200,sp=new Float32Array(SC_*3),sph=new Float32Array(SC_),ssz=new Float32Array(SC_),lp2=new Float32Array(SC_*6),le=new Float32Array(SC_*2);
+var warp=0,SC_=1500,sp=new Float32Array(SC_*3),sph=new Float32Array(SC_),ssz=new Float32Array(SC_),lp2=new Float32Array(SC_*6),le=new Float32Array(SC_*2);
 for(var i=0;i<SC_;i++){var sx,sy;do{sx=(Math.random()-.5)*110;sy=(Math.random()-.5)*70}while(sx*sx+sy*sy<16);
  var sz=20-Math.random()*(N*GAP+70);sp.set([sx,sy,sz],i*3);sph[i]=Math.random();ssz[i]=.5+Math.pow(Math.random(),3)*2.4;
  lp2.set([sx,sy,sz,sx,sy,sz],i*6);le[i*2]=0;le[i*2+1]=1}
@@ -168,6 +168,6 @@ function frame(){
   if(Math.abs(c)<bd){bd=Math.abs(c);best=i}});
  for(var j=0;j<dl.length;j++)dl[j].className=j===best?'on':'';
  bar.style.width=(p*100)+'%';ro.textContent='0'+best+' / 06 — '+NM[best];hint.style.opacity=scrollY>80?0:1;
- R.render(S,cam);requestAnimationFrame(frame)}
+ if(!document.hidden)R.render(S,cam);requestAnimationFrame(frame)}
 frame();
 })();
