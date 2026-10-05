@@ -44,7 +44,7 @@ var PK=[],mc=new THREE.Color('#e2a15f');
 for(var q=0;q<18;q++){var pm=new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshBasicMaterial({color:mc.clone()}));pg.add(pm);PK.push(pm)}
 var ft=[];[['python','#4b8bbe','Python',-4.4],['SP','#2aa0e8','SharePoint',-1.5],['PA','#5b9dff','Automate',1.4],['pbi','#f2c811','Power BI',4.3]].forEach(function(d){var m=tile(d[0],d[1],d[2]);m.scale.setScalar(.9);m.position.set(d[3],3.7,0);m.userData={by:3.7};pg.add(m);ft.push(m)});
 anim.push(function(t){
- var wide=isWide(),L=lay();s1.position.x=wide?-L.X:0;s1.position.y=wide?0:L.mobY;pg.scale.setScalar(wide?L.K:L.mobK);s1.rotation.y=Math.sin(t*.3)*.15;
+ var wide=isWide(),L=lay();s1.position.x=wide?-L.X:0;s1.position.y=0;pg.scale.setScalar(wide?L.K:L.mobK*0.65);s1.rotation.y=Math.sin(t*.3)*.15;
  PK.forEach(function(m,q){var u=(t*.18+q/PK.length)%1,x=-4.2+u*8,k=Math.min(1,Math.max(0,(x+1.4)/2.8)),ch=1-k,lane=((q%3)-1)*.55;
   m.position.set(x,lane+Math.sin(t*3+q*2.1)*.9*ch,Math.sin(t*2+q)*.8*ch);m.rotation.set((t*2+q)*ch,(t*1.7+q)*ch,0);
   m.scale.setScalar((.2+((q*7)%5)*.07)*ch+.3*k);m.material.color.copy(mc).lerp(acc,k)});
@@ -65,7 +65,7 @@ var dbr=new THREE.Mesh(new THREE.TorusGeometry(1.75,.03,8,48),solid(.5));dbr.pos
 var path=['W','N','I','N','D','N','R'].map(function(k){return NV[k]}),pls=[];
 for(var q=0;q<3;q++){var pm=new THREE.Mesh(new THREE.SphereGeometry(.2,12,12),new THREE.MeshBasicMaterial({color:0xffffff}));ag.add(pm);pls.push(pm)}
 anim.push(function(t){
- var wide=isWide(),L=lay();s2.position.x=wide?L.X:0;s2.position.y=wide?0:L.mobY;ag.scale.setScalar(wide?L.K:L.mobK);s2.rotation.y=-Math.sin(t*.3)*.15;
+ var wide=isWide(),L=lay();s2.position.x=wide?L.X:0;s2.position.y=0;ag.scale.setScalar(wide?L.K:L.mobK*0.65);s2.rotation.y=-Math.sin(t*.3)*.15;
  pls.forEach(function(pm,q){var u=((t*.12+q/3)%1)*6,a=Math.floor(u);pm.position.lerpVectors(path[a],path[a+1],u-a)});
  Object.keys(nd2).forEach(function(k){var m=nd2[k],tg=.95;pls.forEach(function(pm){var d=pm.position.distanceTo(NV[k]);if(d<1.6)tg=Math.max(tg,.95+.25*(1-d/1.6))});m.scale.setScalar(m.scale.x+(tg-m.scale.x)*.15)});
  hex.rotation.z=t*.6;shell.rotation.y=t*.5;shell.rotation.x=t*.3;dbr.rotation.z=t*.5});
@@ -85,7 +85,7 @@ var ldot=new THREE.Mesh(new THREE.SphereGeometry(.13,12,12),new THREE.MeshBasicM
 [['HORAS TRABAJADAS',1.2,1.95],['ASISTENCIA POR DIA',0,-2.65]].forEach(function(d){var l=lab(d[0]);l.scale.setScalar(.55);l.position.set(d[1],d[2],.1);dg.add(l)});
 var ft3=[];[['react','#61dafb','React',-3.9],['Vi','#38bdf8','Vite',-1.3],['vercel','#e8eaf6','Vercel',1.3],['Pg','#4f8ac9','PostgreSQL',3.9]].forEach(function(d){var m=tile(d[0],d[1],d[2]);m.scale.setScalar(.9);m.position.set(d[3],3.9,0);m.userData={by:3.9};dg.add(m);ft3.push(m)});
 anim.push(function(t){
- var wide=isWide(),L=lay();s3.position.x=wide?-L.X:0;s3.position.y=wide?0:L.mobY;dg.scale.setScalar(wide?Math.min(1.5,L.K*1.35):L.mobK*0.9);dg.rotation.y=Math.sin(t*.3)*.18;
+ var wide=isWide(),L=lay();s3.position.x=wide?-L.X:0;s3.position.y=0;dg.scale.setScalar(wide?Math.min(1.5,L.K*1.35):L.mobK*0.55);dg.rotation.y=Math.sin(t*.3)*.18;
  bars.forEach(function(m,j){var hh=.5+1*(.5+.5*Math.sin(t*.9+j*.8));m.scale.y=hh;m.position.y=hh/2-1.9});
  var c=Math.floor(((t*.25)%1)*NL)+2;ln.geometry.setDrawRange(0,Math.min(NL,c));ldot.position.copy(lpt[Math.min(NL,c)-1]);
  gMin.rotation.z=-t*1.5;gHr.rotation.z=-t*.125;
@@ -96,7 +96,7 @@ for(var r=0;r<3;r++){var rg=new THREE.Mesh(new THREE.TorusGeometry(4+r*1.8,.04,8
 anim.push(function(t){rings.forEach(function(o,j){o.sp.position.set(Math.cos(t*o.sp_)*o.r,Math.sin(t*o.sp_)*o.r,0);o.rg.rotation.z=t*.1*(j+1)})});
 // about
 var s5=station(5,-6),oc=new THREE.Mesh(new THREE.OctahedronGeometry(3.5),wm());s5.add(oc);
-anim.push(function(t){var w=isWide(),L=lay();s5.position.x=w?-L.X:0;s5.position.y=w?0:L.mobY;oc.scale.setScalar(w?1:L.mobK*1.2);oc.rotation.y=t*.3;oc.rotation.z=t*.15});
+anim.push(function(t){var w=isWide(),L=lay();s5.position.x=w?-L.X:0;s5.position.y=0;oc.scale.setScalar(w?1:L.mobK*0.75);oc.rotation.y=t*.3;oc.rotation.z=t*.15});
 // contacto
 var s6=station(6,0,0,22),ring=new THREE.Mesh(new THREE.TorusGeometry(7,.08,12,120),solid(.8));s6.add(ring);
 var ring2=new THREE.Mesh(new THREE.TorusGeometry(5,.05,12,120),solid(.5));s6.add(ring2);
